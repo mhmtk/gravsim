@@ -2,7 +2,8 @@ from __future__ import division
 import math
 
 class object:
-
+	#Should incorp radius of objects to avoid becoming too strong
+	
 	def __init__(self, iPos, iVel, mass, n):
 		self.vel = iVel
 		self.pos = iPos
