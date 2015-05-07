@@ -10,17 +10,19 @@ class object:
 		self.mass = mass
 		self.xHis = [0]*n
 		self.yHis = [0]*n
-	
+		self.kHis = [0]*n
+		
 	def updatePos(self,n):
 		self.xHis[n] = self.pos[0]
 		self.yHis[n] = self.pos[1]
+		self.kHis[n] = self.getKE()
 		self.pos[0] += self.vel[0]
 		self.pos[1] += self.vel[1]
 		
 		#print self.mass, self.pos, self.vel
 
 	def getKE(self):
-		return .5*mass*velMag()**2
+		return .5*self.mass*self.velMag()**2
 
 	def velMag(self):
 		return math.sqrt(self.vel[0]**2 + self.vel[1]**2)
@@ -32,7 +34,7 @@ class object:
 
 def dataSet(positions, velocities, masses):
 	
-	timeSet = range(0, 10000)
+	timeSet = range(0, 25000)
 	objects = []
 	G = .000001
 	
