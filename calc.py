@@ -3,7 +3,8 @@ import math
 
 class object:
 	#Should incorp radius of objects to avoid becoming too strong
-	
+	aFactor = 1	
+
 	def __init__(self, iPos, iVel, mass, n):
 		self.vel = iVel
 		self.pos = iPos
@@ -28,13 +29,13 @@ class object:
 		return math.sqrt(self.vel[0]**2 + self.vel[1]**2)
 	
 	def accelerate(self, ax, ay):
-		self.vel[0] += ax
-		self.vel[1] += ay
+		self.vel[0] += ax*self.aFactor
+		self.vel[1] += ay*self.aFactor
 	
 
 def dataSet(positions, velocities, masses):
 	
-	timeSet = range(0, 25000)
+	timeSet = range(0, 250000)
 	objects = []
 	G = .000001
 	

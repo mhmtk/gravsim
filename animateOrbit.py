@@ -10,9 +10,9 @@ positions = [[0,0], [2,1], [1,-1], [1,1]]
 velocities = [[0,0], [0,-.002], [-.01,0], [.01,-.01]]
 """
 
-masses = [10, 10]
-positions = [[0,0], [2,2]]
-velocities = [[0,.001],[0,-.001]]
+masses = [12, 12]
+positions = [[0,1], [2,1]]
+velocities = [[0,.002],[0,-.002]]
 
 timeSet, orbitCalc = calc.dataSet(positions, velocities, masses)
 
@@ -33,18 +33,25 @@ line, = ax.plot([],[])
 line2, = ax.plot([],[])
 ax.set_ylim(-1,3)
 ax.set_xlim(-1,3)
-ax.plot(0,0,'ro')
 xdata, ydata = [],[]
 xdata2, ydata2 = [],[] 
 
 def run(i):
+	#pt.remove()
+	i = 20*i
 	t,y = adata[0][i], adata[1][i]
 	t2,y2 = adata2[0][i], adata2[1][i]
+	pt, = ax.plot(t,y,'ko')
+	pt2, = ax.plot(t2,y2,'ko')
+	plt.draw()
+	pt.remove()
+	pt2.remove()
+	#comment out following line of code for lines
+	t,y,t2,y2 = 0,0,0,0
 	xdata.append(t)
 	ydata.append(y)
 	xdata2.append(t2)
-	ydata2.append(y2)
-
+	ydata2.append(y2)	
 	line.set_data(xdata, ydata)
 	line2.set_data(xdata2, ydata2)
 		
@@ -54,6 +61,6 @@ def run(i):
 #	plt.plot(o.xHis, o.yHis)
 
 
-ani = animation.FuncAnimation(fig, run, blit=True, interval=.1, repeat=False)
+ani = animation.FuncAnimation(fig, run, blit=True, interval=.001, repeat=False)
 
 plt.show()
