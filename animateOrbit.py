@@ -9,10 +9,14 @@ masses = [200, .001, .001, .001]
 positions = [[0,0], [2,1], [1,-1], [1,1]]
 velocities = [[0,0], [0,-.002], [-.01,0], [.01,-.01]]
 """
-
+"""binary orbit
 masses = [12, 12]
 positions = [[0,1], [2,1]]
 velocities = [[0,.002],[0,-.002]]
+"""
+masses = [200, .001]
+positions = [[0,0],[2,1]]
+velocities = [[0,0],[0,-.002]]
 
 timeSet, orbitCalc = calc.dataSet(positions, velocities, masses)
 
@@ -38,7 +42,7 @@ xdata2, ydata2 = [],[]
 
 def run(i):
 	#pt.remove()
-	i = 20*i
+	i = i
 	t,y = adata[0][i], adata[1][i]
 	t2,y2 = adata2[0][i], adata2[1][i]
 	pt, = ax.plot(t,y,'ko')
